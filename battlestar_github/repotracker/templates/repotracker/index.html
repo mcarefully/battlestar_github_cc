@@ -1,0 +1,29 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'repotracker/css/style.css' %}" />
+
+<h1>Battle of the GitHub Stars</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="" method="post">
+{% csrf_token %}
+<div class="input-group">
+	<div class="">      
+      <h3>Github Repo 1 url:</h3>
+      <label for="{{form.repo1_url.id_for_label}}">https://github.com/</label>
+      {{form.repo1_url}}
+      <p class="instr_sub">eg, [USER]/[REPOSITORY]<p>
+      {{ form.repo1_url.errors }}
+  </div>
+  <p>~vs.~</p>
+  <div class="">
+      <h3>Github Repo 2 url:</h3>
+      <label for="{{form.repo2_url.id_for_label}}">https://github.com/</label>
+      {{form.repo2_url}}
+      <p class="instr_sub">eg, [USER]/[REPOSITORY]<p>
+      {{ form.repo2_url.errors }}
+  </div>
+</div>
+<br>
+<input type="submit" value="Compare Stats" />
+</form>

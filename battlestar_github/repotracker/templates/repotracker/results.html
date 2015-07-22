@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'repotracker/css/style.css' %}" />
+<script src="{% static "repotracker/js/vendor/jquery.min.js" %}" type="text/javascript"></script>
+<script src="{% static "repotracker/js/main.js" %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var repoURLs = ["{{repocomp.repo1_url | safe}}", "{{repocomp.repo2_url | safe}}"];
+  
+</script>
+
+<h1>Battle of the GitHub Stars: <i>Results!</i></h1>
+<h3 id="Announcement"></h3>
+<div id="ResultsCnt">
+  <div id="id_repo1" class="stats_cnt">
+      <h3>Github Repo 1 url:</h3>
+      <h4><a href="https://github.com/{{ repocomp.repo1_url }}">https://github.com/{{ repocomp.repo1_url }}</a></h4>
+      <p>with:</p>
+      <ul class="repo_stats">
+        <li id="id_repo1_star_ct">*star_ct* star{{ repocomp.repo1_star_ct|pluralize }}</li>
+        <li id="id_repo1_watch_ct">*watch_ct* watcher{{ repocomp.repo1_watch_ct|pluralize }}</li>
+        <li id="id_repo1_fork_ct">*fork_ct* fork{{ repocomp.repo1_fork_ct|pluralize }}</li>
+      </ul>
+      
+  </div>
+  <p>~vs.~</p>
+  <div id="id_repo2" class="stats_cnt">
+      <h3>Github Repo 2:</h3>
+      <h4><a href="https://github.com/{{ repocomp.repo1_url }}">https://github.com/{{ repocomp.repo2_url }}</a></h4>
+      <p>with:</p>
+      <ul class="repo_stats">
+        <li id="id_repo2_star_ct">*star_ct* star{{ repocomp.repo2_star_ct|pluralize }}</li>
+        <li id="id_repo2_watch_ct">*watch_ct* watcher{{ repocomp.repo2_watch_ct|pluralize }}</li>
+        <li id="id_repo2_fork_ct">*fork_ct* fork{{ repocomp.repo2_fork_ct|pluralize }}</li>
+      </ul>
+      
+  </div>
+</div>
+
+
