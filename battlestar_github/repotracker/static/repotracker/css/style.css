@@ -64,7 +64,7 @@ ul.repo_stats {
   text-align:left;
 }
 
-.winner, #announcement{
+.winner{
   color:#00cc33;
   font-weight:bold;
 }
@@ -72,4 +72,8 @@ ul.repo_stats {
 .loser{
   color:#cc0000;
   font-weight:bold;
+}
+
+.tie{
+  color:#ff9900;
 }

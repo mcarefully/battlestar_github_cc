@@ -76,9 +76,11 @@ RepoBattleResults.populateStats = function(useElement, useInner){
 
 RepoBattleResults.compareStars = function(){
   var rComp_stars = [0, 0];
-  var winner = 1;
+  var winner;
+  var loser;
   var repoData;
   var starsData;
+  var useElement
   for (var r=0; r<RepoFetcher.repoDataObjects.length; r++){
     repoData = RepoFetcher.repoDataObjects[r];
     starsData = repoData.data[RepoFetcher.repoAttributes[0].api];
@@ -89,20 +91,25 @@ RepoBattleResults.compareStars = function(){
   if (rComp_stars[0] === rComp_stars[1]){
     console.log("there's been a tie!");
     winner = null;
+
+    useElement = document.getElementById("Announcement");
+    useElement.innerHTML = "Looks as though we have a tie!"
+    useElement.className = "tie";
   }else{
     winner = (rComp_stars[0] > rComp_stars[1]) ? 1:2;
-  }
-  //console.log("Star count winner: "+winner);
-  var useElement = document.getElementById("id_repo"+winner+"_"+RepoFetcher.repoAttributes[0].model);
-  //useElement.innerHTML += " &star; winner!";
-  useElement.className = "winner";
-  var loser = (winner == 1) ? 2:1;
-  var useElement = document.getElementById("id_repo"+loser+"_"+RepoFetcher.repoAttributes[0].model);
-  useElement.className = "loser";
 
-  var useElement = document.getElementById("Announcement");
-  useElement.innerHTML = "Repo "+winner+" is the Battle of the Stars &star; winner!"
-  useElement.className = "winner";
+    //console.log("Star count winner: "+winner);
+    useElement = document.getElementById("id_repo"+winner+"_"+RepoFetcher.repoAttributes[0].model);
+    useElement.className = "winner";
+    loser = (winner == 1) ? 2:1;
+    useElement = document.getElementById("id_repo"+loser+"_"+RepoFetcher.repoAttributes[0].model);
+    useElement.className = "loser";
+
+    useElement = document.getElementById("Announcement");
+    useElement.innerHTML = "Repo "+winner+" is the Battle of the Stars &star; winner!"
+    useElement.className = "winner";
+  }
+  
 }
 
 
